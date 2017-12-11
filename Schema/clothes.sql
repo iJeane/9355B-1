@@ -1,6 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `clothes` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `clothes`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: clothes
 -- ------------------------------------------------------
@@ -61,7 +61,7 @@ CREATE TABLE `productlines` (
 
 LOCK TABLES `productlines` WRITE;
 /*!40000 ALTER TABLE `productlines` DISABLE KEYS */;
-INSERT INTO `productlines` VALUES ('Hoodie','Our hoodie product is made up of 100& cotton available for all customers. It con=mes also with variety os size, colors and designs.'),('Polo Shirt','A close fitting pullover often knit shirt with short or long sleeves and turn over color.'),('Shorts','Quick driying microfiber fabric and 100% cotton mesh linning salt water and chrine resistant and UV protected braiding draw cord.'),('Slacks','Soft and silky feeling when worn. Made from the most luxurious comfortable and absorbent fabric. It traps air and provides warmth in the winter and blissfully cool and breathable in the summer '),('T-Shirt','Fabric shirt with t shape from body and sleeves. It is made of light, inexpensive fabric and are easy to clean.');
+INSERT INTO `productlines` VALUES ('Hoodie','Our hoodie product is made up of 100& cotton available for all customers. It comes also with variety of size, colors and designs.'),('Polo Shirt','A close fitting pullover often knit shirt with short or long sleeves and turn over color.'),('Shorts','Quick driying microfiber fabric and 100% cotton mesh linning salt water and chrine resistant and UV protected braiding draw cord.'),('Slacks','Soft and silky feeling when worn. Made from the most luxurious comfortable and absorbent fabric. It traps air and provides warmth in the winter and blissfully cool and breathable in the summer.'),('T-Shirt','Fabric shirt with t shape from body and sleeves. It is made of light, inexpensive fabric and are easy to clean.');
 /*!40000 ALTER TABLE `productlines` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,9 +85,9 @@ CREATE TABLE `products` (
   KEY `fk_products_category_idx` (`categoryID`),
   KEY `fk_products_suppliers1_idx` (`supplierID`),
   KEY `fk_products_productlines1_idx` (`productLine`),
-  CONSTRAINT `fk_products_category` FOREIGN KEY (`categoryID`) REFERENCES `categories` (`categoryID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_products_productlines1` FOREIGN KEY (`productLine`) REFERENCES `productlines` (`productLine`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_products_suppliers1` FOREIGN KEY (`supplierID`) REFERENCES `suppliers` (`supplierID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `categoryID` FOREIGN KEY (`categoryID`) REFERENCES `categories` (`categoryID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `productLine` FOREIGN KEY (`productLine`) REFERENCES `productlines` (`productLine`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `supplierID` FOREIGN KEY (`supplierID`) REFERENCES `suppliers` (`supplierID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,17 +122,9 @@ CREATE TABLE `suppliers` (
 
 LOCK TABLES `suppliers` WRITE;
 /*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
-INSERT INTO `suppliers` VALUES (101,'Henry Hopkins','1412 Bagwell Avenue, Sioux Falls, South Dakota, USA'),(102,'Sharon Redding','3803 Hide A Way Road, San Jose, California, USA'),(103,'Ralph Jack','2041 Isaacs Creek Road, Catlin, Illinois, USA'),(104,'Bennie Wilson','2659 Simpson Avenue, Harrisburg, Pennsylvania, USA'),(105,'Thomas Lingle','2680 Brannon Avenue, Mandarin, Florida, USA');
+INSERT INTO `suppliers` VALUES (101,'Branden Salumbidez','Rm. 206 Padilla Delos Reyes Building, 232 Juan Luna Street, Binondo, Manila, Philippines'),(102,'Shyann Sanderson','55 Pershing Subic Bay, Freeport Zone Zambales, Zambales, Philippines'),(103,'Lincoln Diwata','855 T. M. Kalaw Street Ermita 1004, Manila, Philippines'),(104,'Hannah Viridiana','Unit 78 Gracepark Commercial Complex 4th Avenue 1403, Caloocan City, Philippines'),(105,'Frasco Magbanua','2/F Adamson Centre Building 121 Alfaro Street Salcedo Village 1200, Makati City, Manila, Philippines');
 /*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'clothes'
---
-
---
--- Dumping routines for database 'clothes'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -143,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-10 22:26:43
+-- Dump completed on 2017-12-12  6:05:12
