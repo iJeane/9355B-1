@@ -61,21 +61,21 @@ CREATE TABLE IF NOT EXISTS `clothes`.`products` (
   INDEX `fk_products_category_idx` (`categoryID` ASC),
   INDEX `fk_products_suppliers1_idx` (`supplierID` ASC),
   INDEX `fk_products_productlines1_idx` (`productLine` ASC),
-  CONSTRAINT `fk_products_category`
+  CONSTRAINT `categoryID`
     FOREIGN KEY (`categoryID`)
     REFERENCES `clothes`.`categories` (`categoryID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_products_suppliers1`
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `supplierID`
     FOREIGN KEY (`supplierID`)
     REFERENCES `clothes`.`suppliers` (`supplierID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_products_productlines1`
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `productLine`
     FOREIGN KEY (`productLine`)
     REFERENCES `clothes`.`productlines` (`productLine`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
